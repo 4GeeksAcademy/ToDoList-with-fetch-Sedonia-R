@@ -1,66 +1,68 @@
 .shadows-into-light-regular {
-    font-family: "Shadows Into Light", cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 100px;
-    color: rgba(179, 114, 125, 0.864);
-  }
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 100px;
+  color: rgba(179, 114, 125, 0.864);
+}
   
-  .header {
-    padding-top: 40px;
-    margin: auto;
-    text-align: center;
-  }
+.header {
+  padding-top: 40px;
+  margin: auto;
+  text-align: center;
+}
 
-  #app {
-    display: flex;
-    justify-content: center;
-  }
+#app {
+  display: flex;
+  justify-content: center;
+}
 
-  body {
-    background-color:rgb(243, 243, 239);
-  }
+body {
+  background-color:rgb(243, 243, 239);
+}
 
-  .paper-stack {
-    height: auto;
-    width: 600px;
-    background: rgb(253, 253, 243);
-    box-shadow:
-        0 1px 1px rgb(0,0,0,0.15),
-        0 10px 0 -5px rgb(253, 253, 243),
-        0 10px 1px -4px rgba(0,0,0,0.15),
-        0 20px 0 -10px rgb(253, 253, 243),
-        0 20px 1px -9px rgba(0,0,0,0.15);
-        /* padding: 20px; */
-  }
+.paper-stack {
+  height: auto;
+  width: 600px;
+  margin: auto;
+  background: rgb(253, 253, 243);
+  box-shadow:
+    0 1px 1px rgb(0,0,0,0.15),
+    0 10px 0 -5px rgb(253, 253, 243),
+    0 10px 1px -4px rgba(0,0,0,0.15),
+    0 20px 0 -10px rgb(253, 253, 243),
+    0 20px 1px -9px rgba(0,0,0,0.15);
+    /* padding: 20px; */
+}
 
-  .input-field {
-    height: 60px;
-    width: 550px;
-    background-color: rgb(253, 253, 243);
-    border: none;
-    color: rgba(159, 148, 150, 0.864);
-    font-size: 40px;
-    margin: 20px;
-    border-top: 2px solid rgba(0,0,0,0.15);
-  }
+.input-field {
+  height: 60px;
+  width: 550px;
+  background-color: rgb(253, 253, 243);
+  border: none;
+  color: rgba(159, 148, 150, 0.864);
+  font-size: 40px;
+  margin: 20px;
+  border-top: 2px solid rgba(0,0,0,0.15);
+  display: block;
+}
 
-  input:focus {
-    outline-width: 0;
+input:focus {
+  outline-width: 0;
 }
 
 ::placeholder {
-    color: rgba(223, 200, 204, 0.864);
+  color: rgba(223, 200, 204, 0.864);
 }
 
 .footer {
-    height: 40px;
-    width: auto;
-    background-color:rgb(253, 253, 243);
-    border-top: 2px solid rgba(0,0,0,0.15);
-    font-size: 20px;
-    padding-left: 15px;
-    padding-top: 5px;
+  height: 40px;
+  width: auto;
+  background-color:rgb(253, 253, 243);
+  border-top: 2px solid rgba(0,0,0,0.15);
+  font-size: 20px;
+  padding-left: 15px;
+  padding-top: 5px;
 }
 
 .button {
@@ -74,4 +76,26 @@
 
 .task:hover .button {
   opacity: 1;
+}
+
+.delete {
+  /* justify-content: center; */
+  margin: 30px auto;
+  width: 20%;
+  height: 40px;
+  background-color:rgba(179, 114, 125, 0.864);
+  color:antiquewhite;
+  border: 1px solid black;
+}
+
+.delete:hover {
+  background-color: rgba(159, 148, 150, 0.864);
+  color: black;
+  border: 1px solid black;
+}
+
+.delete:active {
+  background-color: black !important;
+  color: white !important;
+  border: 1px solid black !important;
 }
