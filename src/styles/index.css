@@ -1,12 +1,77 @@
+.shadows-into-light-regular {
+    font-family: "Shadows Into Light", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 100px;
+    color: rgba(179, 114, 125, 0.864);
+  }
+  
+  .header {
+    padding-top: 40px;
+    margin: auto;
+    text-align: center;
+  }
 
-/* 
+  #app {
+    display: flex;
+    justify-content: center;
+  }
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+  body {
+    background-color:rgb(243, 243, 239);
+  }
 
-*/
+  .paper-stack {
+    height: auto;
+    width: 600px;
+    background: rgb(253, 253, 243);
+    box-shadow:
+        0 1px 1px rgb(0,0,0,0.15),
+        0 10px 0 -5px rgb(253, 253, 243),
+        0 10px 1px -4px rgba(0,0,0,0.15),
+        0 20px 0 -10px rgb(253, 253, 243),
+        0 20px 1px -9px rgba(0,0,0,0.15);
+        /* padding: 20px; */
+  }
+
+  .input-field {
+    height: 60px;
+    width: 550px;
+    background-color: rgb(253, 253, 243);
+    border: none;
+    color: rgba(159, 148, 150, 0.864);
+    font-size: 40px;
+    margin: 20px;
+    border-top: 2px solid rgba(0,0,0,0.15);
+  }
+
+  input:focus {
+    outline-width: 0;
+}
+
+::placeholder {
+    color: rgba(223, 200, 204, 0.864);
+}
+
+.footer {
+    height: 40px;
+    width: auto;
+    background-color:rgb(253, 253, 243);
+    border-top: 2px solid rgba(0,0,0,0.15);
+    font-size: 20px;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
+.button {
+  background: rgb(253, 253, 243);
+  color: rgba(179, 114, 125, 0.864);
+  font-size: 40px;
+  border: none;
+  float: right;
+  opacity: 0;
+}
+
+.task:hover .button {
+  opacity: 1;
+}
