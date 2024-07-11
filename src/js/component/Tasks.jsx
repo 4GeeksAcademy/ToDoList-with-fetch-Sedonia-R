@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 export const Tasks = ({allTasks, setAllTasks}) => {
     return(
-        allTasks.map((input, index) => {
+        allTasks.map((_, index) => {
             const removeItems = (index) => {
                 let data = [...allTasks];
                 data.splice(index, 1);
