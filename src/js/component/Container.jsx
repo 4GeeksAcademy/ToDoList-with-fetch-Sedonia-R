@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-// import { TopInput } from './TopInput';
-// import { Tasks } from './Tasks';
 import { Footer } from './Footer';
-// import { DeleteButton } from './DeleteButton';
 
 export const Container = () => {
     const [ inputValue, setInputValue ] = useState('');
@@ -12,27 +9,62 @@ export const Container = () => {
         if(event.key == 'Enter'){
             setAllTasks([...allTasks, event.target.value]);
             setInputValue('');
+            createNewListItem(event.target.value);
+            getToDoList();
         }
     }
 
+    function getToDoList() {
+        fetch('https://playground.4geeks.com/todo/users/Sedonia', {   
+            method: 'GET'
+        })
+        console.log('fetched to do list')
+    }
+
+    function createNewUser() {
+        fetch('https://playground.4geeks.com/todo/users/Sedonia', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: 'Sedonia'
+            }),
+        })
+        .then(response => response.json())
+        console.log('new user created')
+    }
+
     function deleteUser() {
-        fetch (
-            "https://playground.4geeks.com/todo/users/{user_name}", {
+        fetch(
+            "https://playground.4geeks.com/todo/users/Sedonia", {
                 method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    label: "delete user",
-                    is_done: false
-                })
             })
-            .then((response) => {
-                return response.json();
+        let clearedList = [];
+        setAllTasks(clearedList);
+        console.log('deleted user')
+    }
+
+    function createNewListItem(item) {
+        fetch('https://playground.4geeks.com/todo/todos/Sedonia', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                "label": `${item}`,
+                "is_done": false,
+                "id": 44,
+            }),
+        })
+        .then(response => response.json)
+        console.log('created new list item')
+    }
+
+    function removeListItem(id) {
+        fetch(`https://playground.4geeks.com/todo/todos/${id}`, {
+            method: 'DELETE',
             })
-            .then((body) => {
-                setAllTasks('');
-            });
     }
 
     return (
@@ -46,13 +78,17 @@ export const Container = () => {
                     onChange={
                         (event) => setInputValue(event.target.value)
                     }
-                    onKeyDown={(event) => handleInputEnter(event)}
+                    onKeyDown={
+                        (event) => handleInputEnter(event)
+                    }
                 />
                 {allTasks.map((_, index) => {
                     const removeItems = (index) => {
                         let data = [...allTasks];
                         data.splice(index, 1);
                         setAllTasks(data);
+                        removeListItem(index + 10);
+                        console.log('item removed');
                     };
                     return(
                         <div key={index}>
@@ -70,7 +106,10 @@ export const Container = () => {
                 })}
                 <Footer allTasks={allTasks}/>
             </div>
-            <button className='btn delete' onClick={deleteUser}>Clear All Tasks</button>
+            <div className='row'>
+                <button className='btn newUser' onClick={createNewUser}>Create New User</button>
+                <button className='btn delete' onClick={deleteUser}>Clear All Tasks</button>
+            </div>
         </div>
     );
 };
