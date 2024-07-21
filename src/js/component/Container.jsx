@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Footer } from './Footer';
 
 export const Container = () => {
     const [ inputValue, setInputValue ] = useState('');
     const [ allTasks, setAllTasks ] = useState([]);
+
+    useEffect(() => {
+        createNewUser(),
+        getToDoList()
+    }, [])
 
     const handleInputEnter = (event) => {
         if(event.key == 'Enter'){
@@ -58,6 +63,7 @@ export const Container = () => {
             }),
         })
         .then(response => response.json)
+        getToDoList();
         console.log('created new list item')
     }
 
@@ -65,6 +71,7 @@ export const Container = () => {
         fetch(`https://playground.4geeks.com/todo/todos/${id}`, {
             method: 'DELETE',
             })
+        getToDoList();
     }
 
     return (
@@ -82,7 +89,7 @@ export const Container = () => {
                         (event) => handleInputEnter(event)
                     }
                 />
-                {allTasks.map((_, index) => {
+                {allTasks.map((task, index) => {
                     const removeItems = (index) => {
                         let data = [...allTasks];
                         data.splice(index, 1);
@@ -91,7 +98,7 @@ export const Container = () => {
                         console.log('item removed');
                     };
                     return(
-                        <div key={index}>
+                        <div key={task.id}>
                             <ul className="input-field task shadows-into-light-regular p-0">
                                 {allTasks[index]}
                                 <button 
@@ -107,7 +114,7 @@ export const Container = () => {
                 <Footer allTasks={allTasks}/>
             </div>
             <div className='row'>
-                <button className='btn newUser' onClick={createNewUser}>Create New User</button>
+                {/* <button className='btn newUser' onClick={createNewUser}>Create New User</button> */}
                 <button className='btn delete' onClick={deleteUser}>Clear All Tasks</button>
             </div>
         </div>
